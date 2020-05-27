@@ -20,6 +20,19 @@ class Route extends Bootstrap {
 			'action' => 'sobreNos'
 		);
 
+		//rota para o formulário de reserva de cada página
+		$routes['reserva_hospedagem'] = array(
+			'route' => '/reserva_hospedagem',
+			'controller' => 'ReservaHospedagemController',
+			'action' => 'reservaHospedagem'
+		);
+
+		$routes['salvarReserva'] = array(
+			'route' => '/salvarReserva',
+			'controller' => 'ReservaHospedagemController',
+			'action' => 'salvarReserva'
+		);
+
 		$this->setRoutes($routes);
 	}
 
