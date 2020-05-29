@@ -86,9 +86,9 @@
                   <option value="3">3</option>
                  
               </select>
-              
-              <input style="margin-right:8%;border-radius: 5px;" type="date" id="Check in" value="Check in">
-              <input style="margin-left: -70px;border-radius: 5px;" type="date" id="Check out" value="Check out">
+           
+              <input style="margin-right:8%;border-radius: 5px;" type="date" id="Check in" value="<?= $this->view->ReservaHospedagem['DataChegada']?>" name="DataChegada" placeholder="Data de Chegada">
+              <input style="margin-left: -70px;border-radius: 5px;" type="date" id="Check out" value="<?= $this->view->ReservaHospedagem['DataPartida']?>" name="DataPartida" placeholder="Data de Partida">
               
           
         

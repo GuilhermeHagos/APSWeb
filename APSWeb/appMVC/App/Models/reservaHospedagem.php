@@ -23,7 +23,8 @@ class reservaHospedagem extends Model {
 	}
 
 
-    // Configurar função para dar insert no banco reserva(checar o que o formulário pede)
+	// Configurar função para dar insert no banco reserva(checar o que o formulário pede)
+	//como recuperar o usuarioId pra passar aqui no insert
 	public function incluirReserva() {
 		
 		$query = "INSERT INTO `reserva` (`ReservaId`, `NumeroAdultos`, `NumeroCriancas`, `NumeroQuartos`, `UsuarioId`, `ValorReserva`, `DataChegada`, `DataPartida`) VALUES ('', :NumeroAdultos, :NumeroCriancas, :NumeroQuartos, :UsuarioId, :ValorReserva, :DataChegada, :DataPartida)";

@@ -20,8 +20,14 @@ class ReservaHospedagemController extends Action {
 	public function salvarReserva() {
 		$reserva = Container::getModel('reservaHospedagem');
 
-		$reserva->__set('descricao', $_POST['descricao']);
-		$reserva->__set('preco', $_POST['preco']);
+		$reserva->__set('NumeroAdultos', $_POST['NumeroAdultos']);
+		$reserva->__set('NumeroCriancas', $_POST['NumeroCriancas']);
+		$reserva->__set('NumeroQuartos', $_POST['NumeroQuartos']);
+		$reserva->__set('UsuarioId', $_POST['UsuarioId']);
+		$reserva->__set('ValorReserva', $_POST['ValorReserva']);
+		$reserva->__set('DataChegada', $_POST['DataChegada']);
+		$reserva->__set('DataPartida', $_POST['DataPartida']);
+		
 
 		$reserva->incluirReserva();
 
