@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="imagem/style.css" />
     
     
 
@@ -26,7 +26,7 @@
           <div class="line"></div>
         </div>
         <ul class="nav-links">
-            <li style="margin-left: -124%;"><a href="#"><img src="hotel.png" alt="imagem de las vegas"></a></li>
+            <li style="margin-left: -124%;"><a href="#"><img src="imagem/hotel.png" alt="imagem de las vegas"></a></li>
 
 
           <li><a href="#">Sobre nós</a></li>
@@ -37,7 +37,7 @@
 
     <section>
       <section style="float: left;">
-        <img src="lasvegas.jpg" alt="dots" />
+        <img src="imagem/lasvegas.jpg" alt="dots" />
         </section>
         <aside style="float: right;"></aside>
     </section>
@@ -46,7 +46,7 @@
     
     <div class="container" style="border-radius: 5px; float: left;">
         <h3>Escolher opção</h3>
-        <form action="/salvarReserva" method="post">
+        <form action="InserirReservaHospedagem.php" method="post">
          <div>
                 <label style="margin-right: 2%;" for="nome">Adultos</label>
                 <label style="margin-right: 3%;" for="email">Crianças</label>
@@ -54,8 +54,9 @@
                 <label style="margin-right: 8%;" for="pwd">Check in</label>
                 <label for="pwd">Check out</label>
         </div>    
-           <select style="margin-right: 4%; border-radius: 5px;">
-               <option value="1">1</option>
+           <select name="NumeroAdultos" style="margin-right: 4%; border-radius: 5px;">
+               <option value="0">0</option>
+               <option value="1" selected>1</option>
                <option value="2">2</option>
                <option value="3">3</option>
                <option value="4">4</option>
@@ -67,8 +68,9 @@
                <option value="10">10</option>
            </select>
              
-                <select style="margin-right: 4%; border-radius: 5px;">
-                    <option value="1">1</option>
+                <select name="NumeroCriancas" style="margin-right: 4%; border-radius: 5px;">
+                    <option value="0">0</option>
+                    <option value="1" selected>1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -80,15 +82,15 @@
                     <option value="10">10</option>
                 </select>
 
-                <select style="margin-right: 4%;border-radius: 5px;">
+                <select name="NumeroQuartos" style="margin-right: 4%;border-radius: 5px;">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                  
               </select>
-           
-              <input style="margin-right:8%;border-radius: 5px;" type="date" id="Check in" value="<?= $this->view->ReservaHospedagem['DataChegada']?>" name="DataChegada" placeholder="Data de Chegada">
-              <input style="margin-left: -70px;border-radius: 5px;" type="date" id="Check out" value="<?= $this->view->ReservaHospedagem['DataPartida']?>" name="DataPartida" placeholder="Data de Partida">
+              
+              <input style="margin-right:8%;border-radius: 5px;" type="date" id="Check in" name="DataChegada">
+              <input style="margin-left: -70px;border-radius: 5px;" type="date" id="Check out" name="DataPartida">
               
           
         
@@ -99,7 +101,7 @@
       </div>
 <h1 style="text-align: center;">Pacote Las Vegas-2021</h1>
 <h5 style="text-align: center;">Passagem aéria + hospedagem</h5>
-<div><img src="hotel.png">
+<div>
 </div>
 </body>
 </html>
