@@ -1,42 +1,60 @@
-<?php if(isset($_GET['login']) && $_GET['login'] == 'erro')
-  {
+<?php
+require_once 'CLASSES/usuarios.php';
+$u = new Usuario();
 ?>
-    <div class="text-danger">
-      ERRO - Usuario Invalido!
-    </div>
-<?php 
-  }
-?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Primeiro Login</h2>
-      <form action="valida_login.php" method="post">
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" placeholder="Digite email" name="email">
-        </div>
-        <div class="form-group">
-          <label for="pwd">Senha:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Digite senha" name="senha">
-        </div>
-        <div class="form-group form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="remember"> Esqueci a senha
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </form>
-    </div>
-  </body>
+
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Login</title>
+	<link rel="stylesheet" href="css/estilo.css">
+	<meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+	<div id="corpo-form">
+		<h1>Entrar</h1>
+		<form method="POST">
+			<input type="email" placeholder="Usuário" name="email">
+			<input type="password" placeholder="Senha" name="senha">
+			<input type="submit" value="ACESSAR">
+			<a href="cadastrar.php">Ainda não é inscrito?<strong> Cadastre-se!</strong></a>
+		</form>
+	</div>
+	<?php
+	if (isset($_POST['email'])) {
+		$email = addslashes($_POST['email']);
+		$senha = addslashes($_POST['senha']);
+
+		if (!empty($email) && !empty($senha)) {
+			$u->conectar("apsweb", "http://127.0.0.1/", "root", "");
+			if ($u->msgErro == "") {
+				if ($u->logar($email, $senha)) {
+					header("location: AreaPrivada.php");
+				} else {
+	?>
+					<div class="msg-erro">
+						Email e/ou senha estão incorretos!
+					</div>
+				<?php
+				}
+			} else {
+				?>
+				<div class="msg-erro">
+					<?php echo "Erro: " . $u->msgErro; ?>
+				</div>
+			<?php
+			}
+		} else {
+			?>
+			<div class="msg-erro">
+				Preencha todos os campos!
+			</div>
+	<?php
+		}
+	}
+	?>
+</body>
+
 </html>
